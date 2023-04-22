@@ -1,104 +1,84 @@
 import React from "react";
+import format from "date-fns/format";
+import { Link } from "react-router-dom";
 
-const Post = () => {
+const Post = ({ _id, title, summary, cover, createdAt }) => {
   return (
-    <section className="pt-20 pb-10 lg:pt-[120px] lg:pb-20">
-      <div className="container mx-auto">
-        <div className="-mx-4 flex flex-wrap justify-center">
-          <div className="w-full px-4">
-            <div className="mx-auto mb-[60px] max-w-[510px] text-center lg:mb-20">
-              <span className="text-primary mb-2 block text-lg font-semibold">
-                Our Blogs
+    <div className="max-w-6xl mx-auto p-4 sm:px-6 h-full">
+      <article className="max-w-sm mx-auto md:max-w-none grid md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 xl:gap-16 items-center">
+        <Link to={`/post/${_id}`} className="relative block group">
+          <div
+            className="absolute inset-0 bg-gray-800 hidden md:block transform md:translate-y-2 md:translate-x-4 group-hover:translate-x-0 group-hover:translate-y-0 transition duration-700 ease-out pointer-events-none"
+            aria-hidden="true"
+          ></div>
+          <figure className="relative h-0 pb-[56.25%] md:pb-[75%] lg:pb-[56.25%] overflow-hidden transform md:-translate-y-2 xl:-translate-y-4 group-hover:translate-x-0 group-hover:translate-y-0 transition duration-700 ease-out">
+            <img
+              className="absolute inset-0 w-full h-full object-cover transform hover:scale-105 transition duration-700 ease-out"
+              src={`http://localhost:3000/${cover}`}
+              width="540"
+              height="303"
+              alt="Blog post"
+            />
+          </figure>
+        </Link>
+        <div>
+          <header>
+            {/* <div className="mb-3">
+              <ul className="flex flex-wrap text-xs font-medium -m-1">
+                <li className="m-1">
+                  <a
+                    className="inline-flex text-center text-gray-100 py-1 px-3 rounded-full bg-purple-600 hover:bg-purple-700 transition duration-150 ease-in-out"
+                    href="#0"
+                  >
+                    Product
+                  </a>
+                </li>
+                <li className="m-1">
+                  <a
+                    className="inline-flex text-center text-gray-100 py-1 px-3 rounded-full bg-blue-500 hover:bg-blue-600 transition duration-150 ease-in-out"
+                    href="#0"
+                  >
+                    Engineering
+                  </a>
+                </li>
+              </ul>
+            </div> */}
+            <h3 className="text-2xl lg:text-3xl font-bold leading-tight mb-2">
+              <Link
+                to={`/post/${_id}`}
+                className="hover:text-teal-800 transition duration-150 ease-in-out"
+              >
+                {title}
+              </Link>
+            </h3>
+          </header>
+          <p className="text-lg text-gray-700 flex-grow">{summary}</p>
+          <footer className="flex items-center mt-4">
+            {/* <a href="#0">
+              <img
+                className="rounded-full flex-shrink-0 mr-4"
+                src="https://preview.cruip.com/open-pro/images/news-author-04.jpg"
+                width="40"
+                height="40"
+                alt="Author 04"
+              />
+            </a> */}
+            <div>
+              <a
+                className="font-medium text-gray-800 hover:text-gray-600 transition duration-150 ease-in-out"
+                href="#0"
+              >
+                Pankaj Kumar
+              </a>
+              <span className="text-gray-700"> - </span>
+              <span className="text-gray-500">
+                {format(new Date(createdAt), "MMMM dd, yyyy")}
               </span>
-              <h2 className="text-dark mb-4 text-3xl font-bold sm:text-4xl md:text-[40px]">
-                Our Recent News
-              </h2>
-              <p className="text-body-color text-base">
-                There are many variations of passages of Lorem Ipsum available
-                but the majority have suffered alteration in some form.
-              </p>
             </div>
-          </div>
+          </footer>
         </div>
-        <div className="-mx-4 flex flex-wrap">
-          <div className="w-full px-4 md:w-1/2 lg:w-1/3">
-            <div className="mx-auto mb-10 max-w-[370px]">
-              <div className="mb-8 overflow-hidden rounded">
-                <img
-                  src="https://cdn.tailgrids.com/2.0/image/application/images/blogs/blog-01/image-01.jpg"
-                  alt="image"
-                  className="w-full"
-                />
-              </div>
-              <div>
-                <span className="bg-primary mb-5 inline-block rounded py-1 px-4 text-center text-xs font-semibold leading-loose text-white">
-                  Dec 22, 2023
-                </span>
-                <h3>
-                  <a className="text-dark hover:text-primary mb-4 inline-block text-xl font-semibold sm:text-2xl lg:text-xl xl:text-2xl">
-                    Meet AutoManage, the best AI management tools
-                  </a>
-                </h3>
-                <p className="text-body-color text-base">
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="w-full px-4 md:w-1/2 lg:w-1/3">
-            <div className="mx-auto mb-10 max-w-[370px]">
-              <div className="mb-8 overflow-hidden rounded">
-                <img
-                  src="https://cdn.tailgrids.com/2.0/image/application/images/blogs/blog-01/image-02.jpg"
-                  alt="image"
-                  className="w-full"
-                />
-              </div>
-              <div>
-                <span className="bg-primary mb-5 inline-block rounded py-1 px-4 text-center text-xs font-semibold leading-loose text-white">
-                  Mar 15, 2023
-                </span>
-                <h3>
-                  <a className="text-dark hover:text-primary mb-4 inline-block text-xl font-semibold sm:text-2xl lg:text-xl xl:text-2xl">
-                    How to earn more money as a wellness coach
-                  </a>
-                </h3>
-                <p className="text-body-color text-base">
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="w-full px-4 md:w-1/2 lg:w-1/3">
-            <div className="mx-auto mb-10 max-w-[370px]">
-              <div className="mb-8 overflow-hidden rounded">
-                <img
-                  src="https://cdn.tailgrids.com/2.0/image/application/images/blogs/blog-01/image-03.jpg"
-                  alt="image"
-                  className="w-full"
-                />
-              </div>
-              <div>
-                <span className="bg-primary mb-5 inline-block rounded py-1 px-4 text-center text-xs font-semibold leading-loose text-white">
-                  Jan 05, 2023
-                </span>
-                <h3>
-                  <a className="text-dark hover:text-primary mb-4 inline-block text-xl font-semibold sm:text-2xl lg:text-xl xl:text-2xl">
-                    The no-fuss guide to upselling and cross selling
-                  </a>
-                </h3>
-                <p className="text-body-color text-base">
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+      </article>
+    </div>
   );
 };
 

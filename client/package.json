@@ -9,8 +9,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@material-tailwind/react": "^1.4.2",
+    "date-fns": "^2.29.3",
+    "kutty": "^0.6.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^4.8.0",
+    "react-quill": "^2.0.0",
     "react-router-dom": "^6.10.0"
   },
   "devDependencies": {

@@ -1,84 +1,186 @@
-import React from "react";
+import React, { useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
+import { UserContext } from "../UserContext/UserContext";
+import {
+  Navbar,
+  MobileNav,
+  Typography,
+  Button,
+  IconButton,
+} from "@material-tailwind/react";
 
 const Header = () => {
-  return (
-    <header className="p-4 bg-gray-800 text-gray-100">
-      <div className="container flex justify-between h-16 mx-auto">
-        <Link
-          rel="noopener noreferrer"
-          to="/"
-          aria-label="Back to homepage"
-          className="flex items-center p-2"
-        >
-          <img
-            src="https://pankajktech.me/src/img/pankaj.png"
-            alt="logo"
-            className="h-14"
-          />
-        </Link>
-        <div className="flex items-center md:space-x-4">
-          <div className="relative">
-            <span className="absolute inset-y-0 left-0 flex items-center pl-2">
-              <button
-                type="submit"
-                title="Search"
-                className="p-1 focus:outline-none focus:ring"
-              >
-                <svg
-                  fill="currentColor"
-                  viewBox="0 0 512 512"
-                  className="w-4 h-4 text-gray-100"
-                >
-                  <path d="M479.6,399.716l-81.084-81.084-62.368-25.767A175.014,175.014,0,0,0,368,192c0-97.047-78.953-176-176-176S16,94.953,16,192,94.953,368,192,368a175.034,175.034,0,0,0,101.619-32.377l25.7,62.2L400.4,478.911a56,56,0,1,0,79.2-79.195ZM48,192c0-79.4,64.6-144,144-144s144,64.6,144,144S271.4,336,192,336,48,271.4,48,192ZM456.971,456.284a24.028,24.028,0,0,1-33.942,0l-76.572-76.572-23.894-57.835L380.4,345.771l76.573,76.572A24.028,24.028,0,0,1,456.971,456.284Z"></path>
-                </svg>
-              </button>
-            </span>
-            <input
-              type="search"
-              name="Search"
-              placeholder="Search..."
-              className="w-32 py-2 pl-10 text-sm rounded-md sm:w-auto focus:outline-none bg-gray-800 text-gray-100 focus:bg-gray-900"
-            />
-          </div>
+  const [openNav, setOpenNav] = React.useState(false);
+  const { user, setUser } = useContext(UserContext);
 
-          <Link to="/login">
-            <button
-              title="Log in"
-              type="button"
-              className="hidden px-6 py-2 font-semibold rounded lg:block bg-violet-400 text-gray-900"
-            >
-              Log in
-            </button>
-          </Link>
-          <Link to="/register">
-            <button
-              title="Log in"
-              type="button"
-              className="hidden px-6 py-2 font-semibold rounded lg:block bg-violet-400 text-gray-900"
-            >
-              Register
-            </button>
-          </Link>
-        </div>
-        <button title="Open menu" type="button" className="p-4 lg:hidden">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            className="w-6 h-6 text-gray-100"
+  React.useEffect(() => {
+    window.addEventListener(
+      "resize",
+      () => window.innerWidth >= 960 && setOpenNav(false)
+    );
+  }, []);
+
+  useEffect(() => {
+    fetch("http://localhost:3000/profile", {
+      credentials: "include",
+    }).then((res) => {
+      res.json().then((userInfo) => {
+        setUser(userInfo);
+      });
+    });
+  }, []);
+
+  const Logout = async () => {
+    try {
+      const response = await fetch("http://localhost:3000/logout", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      });
+      if (response.ok) {
+        setUser(null);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const email = user?.email;
+
+  return (
+    <Navbar className="sticky inset-0 z-10 h-max max-w-full rounded-none py-2 px-4 lg:px-8 lg:py-4">
+      <div className="flex items-center justify-around text-blue-gray-900">
+        <Link to={"/"}>
+          <Typography as="a" className="mr-4 cursor-pointer py-1.5 font-medium">
+            PankajKTech
+          </Typography>
+        </Link>
+        <div className="flex items-center gap-4">
+          {email && (
+            <>
+              <Button
+                variant="gradient"
+                size="sm"
+                className="hidden lg:inline-block"
+              >
+                <Link to={"/create"}>
+                  <span>Create Post</span>
+                </Link>
+              </Button>
+
+              <Button
+                variant="gradient"
+                size="sm"
+                color="red"
+                className="hidden lg:inline-block"
+                onClick={Logout}
+              >
+                <span>Logout</span>
+              </Button>
+            </>
+          )}
+          {!email && (
+            <>
+              <Button
+                variant="gradient"
+                size="sm"
+                className="hidden lg:inline-block"
+              >
+                <Link to={"/login"}>
+                  <span>SignIn</span>
+                </Link>
+              </Button>
+              <Button
+                variant="gradient"
+                size="sm"
+                color="green"
+                className="hidden lg:inline-block"
+              >
+                <Link to={"/register"}>
+                  <span>Register</span>
+                </Link>
+              </Button>
+            </>
+          )}
+          <IconButton
+            variant="text"
+            className="ml-auto h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
+            ripple={false}
+            onClick={() => setOpenNav(!openNav)}
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M4 6h16M4 12h16M4 18h16"
-            ></path>
-          </svg>
-        </button>
+            {openNav ? (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                className="h-6 w-6"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            ) : (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            )}
+          </IconButton>
+        </div>
       </div>
-    </header>
+
+      <MobileNav open={openNav}>
+        {email && (
+          <>
+            <Button variant="gradient" size="sm" fullWidth className="mb-2">
+              <Link to={"/login"}>
+                <span>Create Post</span>
+              </Link>
+            </Button>
+            <Button
+              variant="gradient"
+              color="red"
+              size="sm"
+              fullWidth
+              className="mb-2"
+            >
+              <Link to={"/register"}>
+                <span>Logout</span>
+              </Link>
+            </Button>
+          </>
+        )}
+        {!email && (
+          <>
+            <Button variant="gradient" size="sm" fullWidth className="mb-2">
+              <Link to={"/login"}>
+                <span>Login</span>
+              </Link>
+            </Button>
+            <Button variant="gradient" size="sm" fullWidth className="mb-2">
+              <Link to={"/register"}>
+                <span>Register</span>
+              </Link>
+            </Button>
+          </>
+        )}
+      </MobileNav>
+    </Navbar>
   );
 };
 
