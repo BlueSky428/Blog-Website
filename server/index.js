@@ -18,7 +18,10 @@ dotenv.config();
 app.use(
   cors({
     credentials: true,
-    origin: ["http://localhost:5173", "https://pankajktech-blog.onrender.com/"],
+    origin: [
+      "http://localhost:5173",
+      "https://blog-website-flax-six.vercel.app/",
+    ],
   })
 );
 app.use(express.json());
