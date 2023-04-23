@@ -10,7 +10,6 @@ const ShowPost = () => {
     fetch("https://pankajktech-blog.onrender.com/posts")
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setPosts(data);
         setIsLoading(false);
       });

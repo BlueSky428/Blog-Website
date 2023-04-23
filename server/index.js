@@ -17,12 +17,8 @@ const app = express();
 dotenv.config();
 app.use(
   cors({
+    origin: ["http://localhost:3000", "https://pankajktech.netlify.app/"],
     credentials: true,
-    origin: [
-      "https://blog-website-flax-six.vercel.app/",
-      "https: //blog-website-pankajktech.vercel.app/",
-      "http://localhost:5173",
-    ],
   })
 );
 app.use(express.json());
