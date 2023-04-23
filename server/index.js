@@ -15,9 +15,10 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const app = express();
 dotenv.config();
+app.options("*", cors());
 app.use(
   cors({
-    origin: ["http://localhost:3000", "https://pankajktech.netlify.app/"],
+    origin: ["http://localhost:5173", "https://pankajktech.netlify.app/"],
     credentials: true,
   })
 );
