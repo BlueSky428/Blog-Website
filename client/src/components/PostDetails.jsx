@@ -10,7 +10,7 @@ const PostDetails = () => {
   console.log(post.updatedAt);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/post/${id}`)
+    fetch(`https://pankajktech-blog.onrender.com/post/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setPost(data);

@@ -7,7 +7,7 @@ const ShowPost = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:3000/posts")
+    fetch("https://pankajktech-blog.onrender.com/posts")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

@@ -21,7 +21,7 @@ const Header = () => {
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:3000/profile", {
+    fetch("https://pankajktech-blog.onrender.com/profile", {
       credentials: "include",
     }).then((res) => {
       res.json().then((userInfo) => {
@@ -32,13 +32,16 @@ const Header = () => {
 
   const Logout = async () => {
     try {
-      const response = await fetch("http://localhost:3000/logout", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-      });
+      const response = await fetch(
+        "https://pankajktech-blog.onrender.com/logout",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+        }
+      );
       if (response.ok) {
         setUser(null);
       }

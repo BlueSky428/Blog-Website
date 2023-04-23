@@ -21,20 +21,20 @@ const CreatePost = () => {
 
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:3000/post", {
-        method: "POST",
-        body: formData,
-      });
+      const response = await fetch(
+        "https://pankajktech-blog.onrender.com/post",
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
       if (response.ok) {
-        // Handle success case here
         console.log("Server responded with status: " + response.status);
         setRedirect(true);
       } else {
-        // Handle error case here
         console.error("Server responded with status: " + response.status);
       }
     } catch (error) {
-      // Handle error case here
       console.error(error);
     }
   };

@@ -18,7 +18,7 @@ dotenv.config();
 app.use(
   cors({
     credentials: true,
-    origin: "http://localhost:5173",
+    origin: ["http://localhost:5173", "https://pankajktech-blog.onrender.com/"],
   })
 );
 app.use(express.json());
@@ -28,6 +28,7 @@ app.use("/uploads", express.static(__dirname + "/uploads"));
 app.use(registerRoute, loginRouter, profileRouter, logoutRouter, postRouter);
 
 connectMongoDB();
-app.listen(3000, () => {
+const port = 3000;
+app.listen(port, () => {
   console.log("Server running on port 3000");
 });

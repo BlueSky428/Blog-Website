@@ -10,7 +10,7 @@ const Register = () => {
     e.preventDefault();
 
     try {
-      await fetch("http://localhost:3000/register", {
+      await fetch("https://pankajktech-blog.onrender.com/register", {
         method: "POST",
         body: JSON.stringify({
           email,

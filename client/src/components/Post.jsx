@@ -23,26 +23,6 @@ const Post = ({ _id, title, summary, cover, createdAt }) => {
         </Link>
         <div>
           <header>
-            {/* <div className="mb-3">
-              <ul className="flex flex-wrap text-xs font-medium -m-1">
-                <li className="m-1">
-                  <a
-                    className="inline-flex text-center text-gray-100 py-1 px-3 rounded-full bg-purple-600 hover:bg-purple-700 transition duration-150 ease-in-out"
-                    href="#0"
-                  >
-                    Product
-                  </a>
-                </li>
-                <li className="m-1">
-                  <a
-                    className="inline-flex text-center text-gray-100 py-1 px-3 rounded-full bg-blue-500 hover:bg-blue-600 transition duration-150 ease-in-out"
-                    href="#0"
-                  >
-                    Engineering
-                  </a>
-                </li>
-              </ul>
-            </div> */}
             <h3 className="text-2xl lg:text-3xl font-bold leading-tight mb-2">
               <Link
                 to={`/post/${_id}`}
