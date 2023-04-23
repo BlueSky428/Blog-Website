@@ -53,7 +53,10 @@ const Header = () => {
     <Navbar className="sticky inset-0 z-10 h-max max-w-full rounded-none py-2 px-4 lg:px-8 lg:py-4">
       <div className="flex items-center justify-around text-blue-gray-900">
         <Link to={"/"}>
-          <Typography as="a" className="mr-4 cursor-pointer py-1.5 font-medium">
+          <Typography
+            as="a"
+            className="mr-4 cursor-pointer py-1.5 text-xl font-bold"
+          >
             PankajKTech
           </Typography>
         </Link>

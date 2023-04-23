@@ -5,11 +5,11 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "start": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "build": "yarn install"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
-    "bson": "5.0.0",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
@@ -17,5 +17,8 @@
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^7.0.4",
     "multer": "^1.4.5-lts.1"
+  },
+  "engines": {
+    "node": "18.16.0"
   }
 }
