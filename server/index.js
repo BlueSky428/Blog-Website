@@ -19,8 +19,9 @@ app.use(
   cors({
     credentials: true,
     origin: [
-      "http://localhost:5173",
       "https://blog-website-flax-six.vercel.app/",
+      "https: //blog-website-pankajktech.vercel.app/",
+      "http://localhost:5173",
     ],
   })
 );
