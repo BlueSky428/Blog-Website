@@ -38,6 +38,11 @@ array-flatten@1.1.1:
   resolved "https://registry.yarnpkg.com/array-flatten/-/array-flatten-1.1.1.tgz#9a5f699051b1e7073328f2a008968b64ea2955d2"
   integrity sha512-PCVAQswWemu6UdxsDFFX/+gVeYqKAod3D3UVm91jHwynguOwAvYPhx8nNlM++NqRcK6CxxpUafjmhIdKiHibqg==
 
+bason@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/bason/-/bason-1.0.4.tgz#e1f78614ade3fe3c6e8967c68a5839457ce85fcc"
+  integrity sha512-439qbMsX29odVBRGkowAFEfjV7dUGKJKnL5ih/LiQNyVo4huZw7pdr+0oHFrca/RjUnVHWO8BhX7KcVvNMtl3Q==
+
 bcryptjs@^2.4.3:
   version "2.4.3"
   resolved "https://registry.yarnpkg.com/bcryptjs/-/bcryptjs-2.4.3.tgz#9ab5627b93e60621ff7cdac5da9733027df1d0cb"

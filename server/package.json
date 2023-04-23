@@ -5,11 +5,10 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "start": "node index.js",
-    "build": "webpack --config webpack.config.js",
-    "dev": "nodemon index.js"
+    "start": "nodemon index.js"
   },
   "dependencies": {
+    "bason": "^1.0.4",
     "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
