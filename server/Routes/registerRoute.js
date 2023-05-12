@@ -5,9 +5,9 @@ const registerRoute = express.Router();
 const salt = bcrypt.genSaltSync(10);
 
 registerRoute.post("/register", async (req, res) => {
-  const { username, password } = req.body;
+  const { email, password } = req.body;
   try {
-    const user = await userModel.findOne({ username });
+    const user = await userModel.findOne({ email });
     if (user) {
       return res.status(400).json({ message: "User already exists" });
     }
@@ -15,7 +15,7 @@ registerRoute.post("/register", async (req, res) => {
     console.log(`Error: ${err.message}`);
   }
   const userData = await userModel.create({
-    username: username,
+    email: email,
     password: bcrypt.hashSync(password, salt),
   });
   res.status(201).json(userData);

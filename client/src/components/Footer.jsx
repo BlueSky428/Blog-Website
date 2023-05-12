@@ -5,7 +5,7 @@ import { FaTwitter, FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className="flex w-full flex-row flex-wrap items-center justify-center gap-y-6 gap-x-12 border-t border-blue-gray-50 py-3 text-center md:justify-around mt-10 text-2xl">
+    <footer className="flex w-full flex-row flex-wrap items-center justify-center gap-x-12 border-t border-blue-gray-50 py-3 text-center md:justify-around mt-10 text-2xl">
       <Typography color="blue-gray" className="font-semibold">
         &copy; 2023 PankajKTech
       </Typography>

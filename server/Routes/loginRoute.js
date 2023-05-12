@@ -13,7 +13,6 @@ loginRouter.post("/login", async (req, res) => {
     jwt.sign(
       { email, id: userDoc._id },
       process.env.JWT_SECRET,
-      {},
       (err, token) => {
         if (err) {
           throw err;

@@ -8,23 +8,20 @@ import profileRouter from "./Routes/profileRoute.js";
 import connectMongoDB from "./Database/conn.js";
 import logoutRouter from "./Routes/logoutRoute.js";
 import postRouter from "./Routes/postRoute.js";
-import { fileURLToPath } from "url";
-import path from "path";
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-
-const app = express();
 dotenv.config();
-app.options("*", cors());
+const app = express();
+
+const url = process.env.ORIGIN_URL;
+
 app.use(
   cors({
-    origin: ["http://localhost:5173", "https://pankajktech.netlify.app/"],
+    origin: [url, "http://localhost:5173"],
     credentials: true,
   })
 );
 app.use(express.json());
 app.use(cookieParser());
-app.use("/uploads", express.static(__dirname + "/uploads"));
 
 app.use(registerRoute, loginRouter, profileRouter, logoutRouter, postRouter);
 

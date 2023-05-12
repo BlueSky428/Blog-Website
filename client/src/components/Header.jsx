@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { UserContext } from "../UserContext/UserContext";
 import {
   Navbar,
-  MobileNav,
+  Collapse,
   Typography,
   Button,
   IconButton,
@@ -56,25 +56,22 @@ const Header = () => {
     <Navbar className="sticky inset-0 z-10 h-max max-w-full rounded-none py-2 px-4 lg:px-8 lg:py-4">
       <div className="flex items-center justify-around text-blue-gray-900">
         <Link to={"/"}>
-          <Typography
-            as="a"
-            className="mr-4 cursor-pointer py-1.5 text-xl font-bold"
-          >
+          <Typography className="mr-4 cursor-pointer py-1.5 text-xl font-bold">
             PankajKTech
           </Typography>
         </Link>
         <div className="flex items-center gap-4">
           {email && (
             <>
-              <Button
-                variant="gradient"
-                size="sm"
-                className="hidden lg:inline-block"
-              >
-                <Link to={"/create"}>
+              <Link to={"/create"}>
+                <Button
+                  variant="gradient"
+                  size="sm"
+                  className="hidden lg:inline-block"
+                >
                   <span>Create Post</span>
-                </Link>
-              </Button>
+                </Button>
+              </Link>
 
               <Button
                 variant="gradient"
@@ -89,25 +86,24 @@ const Header = () => {
           )}
           {!email && (
             <>
-              <Button
-                variant="gradient"
-                size="sm"
-                className="hidden lg:inline-block"
-              >
-                <Link to={"/login"}>
+              <Link to={"/login"}>
+                <Button
+                  variant="text"
+                  size="sm"
+                  className="hidden lg:inline-block"
+                >
                   <span>SignIn</span>
-                </Link>
-              </Button>
-              <Button
-                variant="gradient"
-                size="sm"
-                color="green"
-                className="hidden lg:inline-block"
-              >
-                <Link to={"/register"}>
+                </Button>
+              </Link>
+              <Link to={"/register"}>
+                <Button
+                  variant="gradient"
+                  size="sm"
+                  className="hidden lg:inline-block"
+                >
                   <span>Register</span>
-                </Link>
-              </Button>
+                </Button>
+              </Link>
             </>
           )}
           <IconButton
@@ -150,42 +146,36 @@ const Header = () => {
         </div>
       </div>
 
-      <MobileNav open={openNav}>
+      <Collapse open={openNav}>
         {email && (
           <>
-            <Button variant="gradient" size="sm" fullWidth className="mb-2">
-              <Link to={"/login"}>
+            <Link to={"/login"}>
+              <Button variant="gradient" size="sm" className="mb-2">
                 <span>Create Post</span>
-              </Link>
-            </Button>
-            <Button
-              variant="gradient"
-              color="red"
-              size="sm"
-              fullWidth
-              className="mb-2"
-            >
-              <Link to={"/register"}>
+              </Button>
+            </Link>
+            <Link to={"/register"}>
+              <Button variant="gradient" size="sm" color="red" className="mb-2">
                 <span>Logout</span>
-              </Link>
-            </Button>
+              </Button>
+            </Link>
           </>
         )}
         {!email && (
           <>
-            <Button variant="gradient" size="sm" fullWidth className="mb-2">
-              <Link to={"/login"}>
+            <Link to={"/login"}>
+              <Button variant="gradient" size="sm" className="mb-2">
                 <span>Login</span>
-              </Link>
-            </Button>
-            <Button variant="gradient" size="sm" fullWidth className="mb-2">
-              <Link to={"/register"}>
+              </Button>
+            </Link>
+            <Link to={"/register"}>
+              <Button variant="gradient" size="sm" className="mb-2">
                 <span>Register</span>
-              </Link>
-            </Button>
+              </Button>
+            </Link>
           </>
         )}
-      </MobileNav>
+      </Collapse>
     </Navbar>
   );
 };

@@ -1,26 +1,15 @@
 import express from "express";
 const postRouter = express.Router();
-import multer from "multer";
-import fs from "fs";
 import postModel from "../models/postModel.js";
 
-const uploadMiddleware = multer({
-  dest: "uploads/",
-});
+postRouter.post("/post", async (req, res) => {
+  const { title, summary, content, img } = req.body;
 
-postRouter.post("/post", uploadMiddleware.single("file"), async (req, res) => {
-  const { originalname, path } = req.file;
-  const partname = originalname.split(".");
-  const extension = partname[partname.length - 1];
-  const newpath = path + "." + extension;
-  fs.renameSync(path, newpath);
-
-  const { title, summary, content } = req.body;
   const newPost = await postModel.create({
     title,
     summary,
     content,
-    cover: newpath,
+    img,
   });
   res.json(newPost);
 });
