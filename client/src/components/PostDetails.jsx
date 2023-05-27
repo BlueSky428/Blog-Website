@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 
 import { FaFacebook, FaTwitter, FaLinkedinIn } from "react-icons/fa";
 import Loader from "./Loader";
+import { motion } from "framer-motion";
 
 const PostDetails = () => {
   const [post, setPost] = useState({});
@@ -17,11 +18,18 @@ const PostDetails = () => {
 
   const { title, content, img, createdAt } = post;
 
-  if (!post) return <Loader />;
+  if (Object.keys(post).length === 0) {
+    return <Loader />;
+  }
 
   return (
     <article className="px-4 py-12 mx-auto max-w-7xl">
-      <div className="w-full mx-auto mb-10 text-left md:w-3/4 lg:w-1/2">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.5 }}
+        className="w-full mx-auto mb-10 text-left md:w-3/4 lg:w-1/2"
+      >
         <div className="pb-6 mb-6 border-b border-gray-200">
           <h1
             className="mb-3 text-3xl font-bold text-gray-900 md:leading-tight md:text-4xl"
@@ -48,14 +56,20 @@ const PostDetails = () => {
             <FaLinkedinIn className="mx-1 text-xl text-blue-500 hover:text-indigo-700" />
           </a>
         </div>
-        <img
+        <motion.img
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.7 }}
           src={img}
           className="object-cover w-full max-h-72 bg-center rounded"
           alt="PankajKTech"
         />
-      </div>
+      </motion.div>
 
-      <div
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.8 }}
         className="w-full mx-auto prose md:w-3/4 lg:w-1/2"
         dangerouslySetInnerHTML={{ __html: content }}
       />

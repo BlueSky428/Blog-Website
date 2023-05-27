@@ -12,6 +12,7 @@
     "@heroicons/react": "^2.0.18",
     "@material-tailwind/react": "^2.0.0",
     "date-fns": "^2.29.3",
+    "framer-motion": "^10.12.16",
     "kutty": "^0.6.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

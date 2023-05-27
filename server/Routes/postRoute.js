@@ -15,7 +15,7 @@ postRouter.post("/post", async (req, res) => {
 });
 
 postRouter.get("/posts", async (req, res) => {
-  const posts = await postModel.find();
+  const posts = await postModel.find().sort({ createdAt: -1 });
   res.json(posts);
 });
 

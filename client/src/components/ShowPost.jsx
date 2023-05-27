@@ -17,7 +17,7 @@ const ShowPost = () => {
   }
 
   return (
-    <section className="min-h-screen w-full px-4 py-24 mx-auto max-w-7xl md:w-4/5">
+    <section className="min-h-screen w-full px-4 py-24">
       <div className="flex justify-center flex-wrap gap-10 ">
         {posts.length > 0 &&
           posts.map((post) => {
