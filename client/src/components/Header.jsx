@@ -21,7 +21,7 @@ const Header = () => {
   }, []);
 
   useEffect(() => {
-    fetch("https://pankajktech-blog.onrender.com/profile", {
+    fetch("https://blog-website-topaz.vercel.app/profile", {
       credentials: "include",
     }).then((res) => {
       res.json().then((userInfo) => {
@@ -33,7 +33,7 @@ const Header = () => {
   const Logout = async () => {
     try {
       const response = await fetch(
-        "https://pankajktech-blog.onrender.com/logout",
+        "https://blog-website-topaz.vercel.app/logout",
         {
           method: "POST",
           headers: {

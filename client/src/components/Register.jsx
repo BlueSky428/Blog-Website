@@ -11,7 +11,7 @@ const Register = () => {
     e.preventDefault();
 
     try {
-      await fetch("https://pankajktech-blog.onrender.com/register", {
+      await fetch("https://blog-website-topaz.vercel.app/register", {
         method: "POST",
         body: JSON.stringify({
           email,

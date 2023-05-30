@@ -15,7 +15,7 @@ const Login = () => {
     e.preventDefault();
     try {
       const response = await fetch(
-        "https://pankajktech-blog.onrender.com/login",
+        "https://blog-website-topaz.vercel.app/login",
         {
           method: "POST",
           body: JSON.stringify({
