@@ -5,7 +5,7 @@ import Loader from "./Loader";
 const ShowPost = () => {
   const [posts, setPosts] = useState([]);
   useEffect(() => {
-    fetch("https://blog-website-topaz.vercel.app/posts")
+    fetch("https://pankajktechblogapi.vercel.app/posts")
       .then((res) => res.json())
       .then((data) => {
         setPosts(data);

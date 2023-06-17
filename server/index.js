@@ -25,8 +25,14 @@ app.use(cookieParser());
 
 app.use(registerRoute, loginRouter, profileRouter, logoutRouter, postRouter);
 
+app.get("/", (req, res) => {
+  res.send("Welcome to PankajKTech's Blog API");
+});
+
+const PORT = 3000;
+
 connectMongoDB();
-const port = 3000;
-app.listen(port, () => {
-  console.log("Server running on port 3000");
+
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });

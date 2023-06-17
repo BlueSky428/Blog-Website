@@ -9,7 +9,7 @@ const PostDetails = () => {
   const [post, setPost] = useState({});
   const { id } = useParams();
   useEffect(() => {
-    fetch(`https://blog-website-topaz.vercel.app/post/${id}`)
+    fetch(`https://pankajktechblogapi.vercel.app/post/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setPost(data);

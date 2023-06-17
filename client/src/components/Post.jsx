@@ -19,7 +19,7 @@ const Post = ({ title, summary, img, createdAt, _id }) => {
       transition={{ duration: 0.5 }}
       className="flex justify-center items-center"
     >
-      <Card className=" flex-col md:flex-row w-full max-w-[48rem]">
+      <Card className=" flex-col md:flex-row w-full max-w-[48rem] border-b-2 border-blue-600">
         <CardHeader
           shadow={false}
           floated={false}

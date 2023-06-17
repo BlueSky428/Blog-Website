@@ -16,7 +16,7 @@ const CreatePost = () => {
     e.preventDefault();
     try {
       const response = await fetch(
-        "https://pankajktech-blog.onrender.com/post",
+        "https://pankajktechblogapi.vercel.app/post",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
